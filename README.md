@@ -1,6 +1,6 @@
 # 底盘采购 Process House
 
-> **端到端流程标准 | Process Handbook | V6.0**
+> **端到端流程标准 | Process Handbook | V8.0**
 
 | 文档属性 | 内容 |
 |---|---|
@@ -9,8 +9,51 @@
 | 文档级别 | 内部标准作业程序 |
 | 流程层级 | L0 端到端流程 / L1 流程域 / L2 业务流程 |
 | 适用对象 | 采购、项目、技术、计划、物流、质量、财务及审批岗位 |
-| 版本 | V6.0 |
-| 文档状态 | 标准版 |
+| 版本 | V8.0 |
+| 文档状态 | 受控标准版 |
+| 流程负责人 | 底盘采购流程负责人 |
+| 文件负责人 | 流程管理岗位 |
+| 审批角色 | 采购管理、项目管理及相关授权审批人 |
+| 复审周期 | 每12个月或重大流程变更后即时复审 |
+| 生效原则 | 经流程负责人批准并发布后生效 |
+
+---
+
+## 文档控制与治理原则
+
+| 控制维度 | 管理要求 |
+|---|---|
+| 单一事实来源 | 已发布的主分支版本作为唯一有效版本；个人副本不得替代受控版本 |
+| 版本管理 | 重大流程变化升级主版本；文字、链接或样式修正升级次版本 |
+| 变更审批 | 流程、角色、系统字段、质量门或控制要求发生变化时，必须由流程负责人批准 |
+| 职责分离 | 需求提出、订单创建、订单审批、到货检验和异常关闭不得由同一角色独立完成 |
+| 审计追踪 | 关键决定必须能够追溯到输入文件、责任人、日期、批准记录和最终输出 |
+| 例外管理 | 任何绕过质量门的行为必须有书面例外批准、有效期限和补救措施 |
+| 定期复审 | 至少每12个月复审一次；法规、系统或组织职责变化时立即触发复审 |
+
+## 流程层级模型
+
+```mermaid
+%%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','edgeLabelBackground':'#FFFFFF'}}}%%
+flowchart LR
+    A["L0 端到端价值链"] --> B["L1 流程域"] --> C["L2 业务流程"] --> D["L3 作业步骤"] --> E["L4 表单、系统字段与证据"]
+    classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.8px,color:#17202A,font-size:20px;
+```
+
+## SIPOC 总览
+
+| 供应方 Supplier | 输入 Input | 核心流程 Process | 输出 Output | 客户 Customer |
+|---|---|---|---|---|
+| 项目、技术、计划、供应商 | 项目需求、技术规格、报价、SOP、BANF | 询价 → 审核 → 下单 → AB确认 → 交期管理 → 到货放行 | 受控采购订单、确认交期、合格底盘、完整档案 | 项目、生产、物流、质量、财务 |
+
+## 核心控制框架
+
+```mermaid
+%%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','edgeLabelBackground':'#FFFFFF'}}}%%
+flowchart LR
+    A["需求完整性"] --> B["技术配置一致性"] --> C["价格与商务一致性"] --> D["授权与职责分离"] --> E["交期与变更受控"] --> F["到货质量放行"] --> G["证据归档与审计闭环"]
+    classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.8px,color:#17202A,font-size:20px;
+```
 
 ---
 
@@ -145,30 +188,30 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到项目或投标需求] --> B[确认项目基本信息]
-    B --> C[整理技术规格和商务条件]
-    C --> D[向供应商询价]
-    D --> E[审核报价]
-    E -->|存在偏差| F[要求修订报价]
+    A["收到项目或投标需求"] --> B["确认项目基本信息"]
+    B --> C["整理技术规格和商务条件"]
+    C --> D["向供应商询价"]
+    D --> E["审核报价"]
+    E -->|存在偏差| F["要求修订报价"]
     F --> E
-    E -->|审核通过| G[制作底盘预算与预核算]
-    G --> H{项目是否中标}
-    H -->|否| I[归档并关闭项目]
-    H -->|是| J[接收最终底盘技术检查]
-    J --> K[向供应商索取正式订购资料]
-    K --> L[审核订购资料]
-    L -->|存在偏差| M[技术或商务澄清]
+    E -->|审核通过| G["制作底盘预算与预核算"]
+    G --> H{"项目是否中标"}
+    H -->|否| I["归档并关闭项目"]
+    H -->|是| J["接收最终底盘技术检查"]
+    J --> K["向供应商索取正式订购资料"]
+    K --> L["审核订购资料"]
+    L -->|存在偏差| M["技术或商务澄清"]
     M --> L
-    L -->|审核通过| N[创建SAP采购订单]
-    N --> O[内部复核与审批]
-    O --> P[发送正式订单]
-    P --> Q[催收并审核订单确认AB]
-    Q --> R[交期和配置变更管控]
-    R --> S[底盘到货和入库]
-    S --> T[质量检查]
-    T -->|不放行| U[异常整改与复检]
+    L -->|审核通过| N["创建SAP采购订单"]
+    N --> O["内部复核与审批"]
+    O --> P["发送正式订单"]
+    P --> Q["催收并审核订单确认AB"]
+    Q --> R["交期和配置变更管控"]
+    R --> S["底盘到货和入库"]
+    S --> T["质量检查"]
+    T -->|不放行| U["异常整改与复检"]
     U --> T
-    T -->|放行| V[注册文件和项目资料闭环]
+    T -->|放行| V["注册文件和项目资料闭环"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -184,18 +227,18 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[投标或项目需求方] -->|提交需求和截止日期| B[底盘采购]
-    C[技术工程岗位] -->|提交规格书/必选代码/禁用代码| B
-    D[生产计划岗位] -->|提交SOP和排产变化| B
-    B -->|询价和澄清| E[底盘供应商]
+    A["投标或项目需求方"] -->|提交需求和截止日期| B["底盘采购"]
+    C["技术工程岗位"] -->|提交规格书/必选代码/禁用代码| B
+    D["生产计划岗位"] -->|提交SOP和排产变化| B
+    B -->|询价和澄清| E["底盘供应商"]
     E -->|报价/订购资料/AB/交期| B
-    B -->|配置和价格确认| F[项目负责人]
-    B -->|采购订单审批| G[授权审批人]
-    B -->|到货信息| H[物流岗位]
-    H -->|收货和交货单| I[质量岗位]
+    B -->|配置和价格确认| F["项目负责人"]
+    B -->|采购订单审批| G["授权审批人"]
+    B -->|到货信息| H["物流岗位"]
+    H -->|收货和交货单| I["质量岗位"]
     I -->|检验结果| B
     B -->|异常整改要求| E
-    I -->|放行| J[生产使用]
+    I -->|放行| J["生产使用"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -208,6 +251,10 @@ flowchart LR
 
 # 第一部分：询价与预算
 
+> **流程目标**：形成技术完整、商务可比且可追溯的采购基准。  
+> **主要责任角色**：底盘采购；协同角色：项目、技术、投标。  
+> **关键控制**：资料完整性、配置一致性、报价有效期与风险假设。
+
 <a id="p03"></a>
 
 ## 3. 询价输入资料完整性检查
@@ -215,28 +262,28 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到询价任务] --> B{是否有项目名称和项目号}
-    B -->|否| B1[向需求方补充项目资料]
+    A["收到询价任务"] --> B{"是否有项目名称和项目号"}
+    B -->|否| B1["向需求方补充项目资料"]
     B1 --> B
-    B -->|是| C{是否有底盘技术规格书}
-    C -->|否| C1[向技术岗位索取规格书]
+    B -->|是| C{"是否有底盘技术规格书"}
+    C -->|否| C1["向技术岗位索取规格书"]
     C1 --> C
-    C -->|是| D{是否有必选代码}
-    D -->|否| D1[确认所有必须配置]
+    C -->|是| D{"是否有必选代码"}
+    D -->|否| D1["确认所有必须配置"]
     D1 --> D
-    D -->|是| E{是否有禁用代码}
-    E -->|否| E1[确认不得提供的配置]
+    D -->|是| E{"是否有禁用代码"}
+    E -->|否| E1["确认不得提供的配置"]
     E1 --> E
-    E -->|是| F{是否有报价截止日期}
-    F -->|否| F1[向需求方确认截止时间]
+    E -->|是| F{"是否有报价截止日期"}
+    F -->|否| F1["向需求方确认截止时间"]
     F1 --> F
-    F -->|是| G{是否有目标交期或SOP}
-    G -->|否| G1[向项目或计划岗位确认]
+    F -->|是| G{"是否有目标交期或SOP"}
+    G -->|否| G1["向项目或计划岗位确认"]
     G1 --> G
-    G -->|是| H{是否明确GSR和注册要求}
-    H -->|否| H1[向技术岗位确认法规要求]
+    G -->|是| H{"是否明确GSR和注册要求"}
+    H -->|否| H1["向技术岗位确认法规要求"]
     H1 --> H
-    H -->|是| I[资料完整，可以询价]
+    H -->|是| I["资料完整，可以询价"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -250,17 +297,17 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[取得车辆类型] --> B[取得项目地点或客户简称]
-    B --> C[取得项目号]
-    C --> D[取得PSP主编号]
-    D --> E[取得供应商简称]
-    E --> F[组合文件夹名称]
-    F --> G[车辆类型 + 地点 + A项目号 + P主编号 + 供应商简称]
-    G --> H[建立询价文件夹]
-    H --> I[保存内部需求邮件]
-    I --> J[保存技术规格书]
-    J --> K[保存招标或需求清单]
-    K --> L[保存所有外发和回复邮件]
+    A["取得车辆类型"] --> B["取得项目地点或客户简称"]
+    B --> C["取得项目号"]
+    C --> D["取得PSP主编号"]
+    D --> E["取得供应商简称"]
+    E --> F["组合文件夹名称"]
+    F --> G["车辆类型 + 地点 + A项目号 + P主编号 + 供应商简称"]
+    G --> H["建立询价文件夹"]
+    H --> I["保存内部需求邮件"]
+    I --> J["保存技术规格书"]
+    J --> K["保存招标或需求清单"]
+    K --> L["保存所有外发和回复邮件"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -274,19 +321,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[选择供应商联系人] --> B[核对供应商主体和地区]
-    B --> C[新建询价邮件]
-    C --> D[附加技术规格书]
-    D --> E[附加需求清单或招标文件]
-    E --> F[写明必选代码必须包含]
-    F --> G[写明禁用代码不得包含]
-    G --> H[写明必须满足GSR要求]
-    H --> I[写明报价截止日期]
-    I --> J[写明目标交期和交付地点]
-    J --> K[要求单列首次参数化或一次性费用]
-    K --> L[抄送内部需求方]
-    L --> M[发送邮件]
-    M --> N[将邮件保存至询价文件夹]
+    A["选择供应商联系人"] --> B["核对供应商主体和地区"]
+    B --> C["新建询价邮件"]
+    C --> D["附加技术规格书"]
+    D --> E["附加需求清单或招标文件"]
+    E --> F["写明必选代码必须包含"]
+    F --> G["写明禁用代码不得包含"]
+    G --> H["写明必须满足GSR要求"]
+    H --> I["写明报价截止日期"]
+    I --> J["写明目标交期和交付地点"]
+    J --> K["要求单列首次参数化或一次性费用"]
+    K --> L["抄送内部需求方"]
+    L --> M["发送邮件"]
+    M --> N["将邮件保存至询价文件夹"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -300,19 +347,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[登记询价发送日期] --> B[登记报价截止日期]
-    B --> C{截止日前是否收到报价}
-    C -->|是| D[登记报价收到日期]
-    D --> E[进入报价审核]
-    C -->|否| F[发送第一次催办]
-    F --> G[记录催办日期和供应商答复]
-    G --> H{供应商是否承诺提交日期}
-    H -->|是| I[登记承诺日期]
-    I --> J{承诺日期是否收到}
+    A["登记询价发送日期"] --> B["登记报价截止日期"]
+    B --> C{"截止日前是否收到报价"}
+    C -->|是| D["登记报价收到日期"]
+    D --> E["进入报价审核"]
+    C -->|否| F["发送第一次催办"]
+    F --> G["记录催办日期和供应商答复"]
+    G --> H{"供应商是否承诺提交日期"}
+    H -->|是| I["登记承诺日期"]
+    I --> J{"承诺日期是否收到"}
     J -->|是| D
-    J -->|否| K[第二次催办并升级]
+    J -->|否| K["第二次催办并升级"]
     H -->|否| K
-    K --> L[通知项目或投标负责人风险]
+    K --> L["通知项目或投标负责人风险"]
     L --> C
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
@@ -327,22 +374,22 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到供应商报价] --> B[核对车辆型号]
-    B --> C[核对驱动形式和轴型]
-    C --> D[核对轴距和总质量]
-    D --> E[核对发动机和排放配置]
-    E --> F[逐项核对必选代码]
-    F --> G{必选代码是否全部包含}
-    G -->|否| G1[列入新增清单]
-    G -->|是| H[逐项核对禁用代码]
+    A["收到供应商报价"] --> B["核对车辆型号"]
+    B --> C["核对驱动形式和轴型"]
+    C --> D["核对轴距和总质量"]
+    D --> E["核对发动机和排放配置"]
+    E --> F["逐项核对必选代码"]
+    F --> G{"必选代码是否全部包含"}
+    G -->|否| G1["列入新增清单"]
+    G -->|是| H["逐项核对禁用代码"]
     G1 --> H
-    H --> I{是否包含禁用代码}
-    I -->|是| I1[列入删除清单]
-    I -->|否| J[核对技术规格每一条要求]
+    H --> I{"是否包含禁用代码"}
+    I -->|是| I1["列入删除清单"]
+    I -->|否| J["核对技术规格每一条要求"]
     I1 --> J
-    J --> K{描述或代码是否有冲突}
-    K -->|是| K1[列入修改或待确认清单]
-    K -->|否| L[技术审核完成]
+    J --> K{"描述或代码是否有冲突"}
+    K -->|是| K1["列入修改或待确认清单"]
+    K -->|否| L["技术审核完成"]
     K1 --> L
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
@@ -357,19 +404,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[技术审核完成] --> B[核对报价数量]
-    B --> C[核对单台净价]
-    C --> D[核对折扣和附加费]
-    D --> E[核对首次参数化费用]
-    E --> F[核对运输费用]
-    F --> G[核对币种和税务口径]
-    G --> H[核对付款条件]
-    H --> I[核对报价有效期]
-    I --> J[核对交期及起算点]
-    J --> K[核对交付地点]
-    K --> L{是否有价格调整或保留条款}
-    L -->|是| M[记录商务风险]
-    L -->|否| N[商务审核完成]
+    A["技术审核完成"] --> B["核对报价数量"]
+    B --> C["核对单台净价"]
+    C --> D["核对折扣和附加费"]
+    D --> E["核对首次参数化费用"]
+    E --> F["核对运输费用"]
+    F --> G["核对币种和税务口径"]
+    G --> H["核对付款条件"]
+    H --> I["核对报价有效期"]
+    I --> J["核对交期及起算点"]
+    J --> K["核对交付地点"]
+    K --> L{"是否有价格调整或保留条款"}
+    L -->|是| M["记录商务风险"]
+    L -->|否| N["商务审核完成"]
     M --> N
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
@@ -384,23 +431,23 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[汇总技术和商务差异] --> B[分类为新增]
-    A --> C[分类为删除]
-    A --> D[分类为修改]
-    A --> E[分类为待内部确认]
-    E --> F[提交技术或项目负责人判断]
-    F --> G[取得书面决定]
-    B --> H[形成供应商差异清单]
+    A["汇总技术和商务差异"] --> B["分类为新增"]
+    A --> C["分类为删除"]
+    A --> D["分类为修改"]
+    A --> E["分类为待内部确认"]
+    E --> F["提交技术或项目负责人判断"]
+    F --> G["取得书面决定"]
+    B --> H["形成供应商差异清单"]
     C --> H
     D --> H
     G --> H
-    H --> I[发送供应商修订要求]
-    I --> J[收到修订报价]
-    J --> K[重新进行完整技术审核]
-    K --> L[重新进行完整商务审核]
-    L --> M{是否仍有偏差}
+    H --> I["发送供应商修订要求"]
+    I --> J["收到修订报价"]
+    J --> K["重新进行完整技术审核"]
+    K --> L["重新进行完整商务审核"]
+    L --> M{"是否仍有偏差"}
     M -->|是| A
-    M -->|否| N[确定最终有效报价]
+    M -->|否| N["确定最终有效报价"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -414,22 +461,22 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[最终报价审核通过] --> B[打开底盘预算模板]
-    B --> C[录入供应商和车型]
-    C --> D[录入数量和单台净价]
-    D --> E[录入附加费和一次性费用]
-    E --> F[录入交期和报价有效期]
-    F --> G[录入供应商额外选项]
-    G --> H[写明价格口径和假设]
-    H --> I[附加最终报价]
-    I --> J[附加完成的需求清单]
-    J --> K[附加技术规格书]
-    K --> L[附加关键澄清记录]
-    L --> M[提交投标或项目负责人]
-    M --> N[保存预核算和发送邮件]
-    N --> O{项目是否继续}
-    O -->|否| P[移入已关闭目录]
-    O -->|是| Q[等待中标后的采购输入]
+    A["最终报价审核通过"] --> B["打开底盘预算模板"]
+    B --> C["录入供应商和车型"]
+    C --> D["录入数量和单台净价"]
+    D --> E["录入附加费和一次性费用"]
+    E --> F["录入交期和报价有效期"]
+    F --> G["录入供应商额外选项"]
+    G --> H["写明价格口径和假设"]
+    H --> I["附加最终报价"]
+    I --> J["附加完成的需求清单"]
+    J --> K["附加技术规格书"]
+    K --> L["附加关键澄清记录"]
+    L --> M["提交投标或项目负责人"]
+    M --> N["保存预核算和发送邮件"]
+    N --> O{"项目是否继续"}
+    O -->|否| P["移入已关闭目录"]
+    O -->|是| Q["等待中标后的采购输入"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -442,6 +489,10 @@ flowchart LR
 
 # 第二部分：中标后采购准备
 
+> **流程目标**：将中标方案转换为可执行、无歧义的正式订购基准。  
+> **主要责任角色**：底盘采购；协同角色：项目、技术、供应商。  
+> **关键控制**：最终技术检查、最终报价和订购资料三方一致。
+
 <a id="p11"></a>
 
 ## 11. 中标后项目文件夹结构
@@ -449,18 +500,18 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[确认项目中标] --> B[创建正式采购主文件夹]
-    B --> C[01 最终技术检查]
-    B --> D[02 最终供应商报价]
-    B --> E[03 预算与预核算]
-    B --> F[04 正式订购资料]
-    B --> G[05 内部澄清]
-    B --> H[06 供应商澄清]
-    B --> I[07 签字订单]
-    B --> J[08 订单确认AB]
-    B --> K[09 交期与配置变更]
-    B --> L[10 到货与质量]
-    B --> M[11 注册文件]
+    A["确认项目中标"] --> B["创建正式采购主文件夹"]
+    B --> C["01 最终技术检查"]
+    B --> D["02 最终供应商报价"]
+    B --> E["03 预算与预核算"]
+    B --> F["04 正式订购资料"]
+    B --> G["05 内部澄清"]
+    B --> H["06 供应商澄清"]
+    B --> I["07 签字订单"]
+    B --> J["08 订单确认AB"]
+    B --> K["09 交期与配置变更"]
+    B --> L["10 到货与质量"]
+    B --> M["11 注册文件"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -474,16 +525,16 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到最终技术检查邮件] --> B[确认项目和车辆]
-    B --> C[确认项目号和PSP]
-    C --> D[保存邮件和附件]
-    D --> E[复制最终报价]
-    E --> F[复制预算或预核算]
-    F --> G[比较最终检查与报价配置]
-    G --> H{是否发现新增或取消配置}
-    H -->|是| I[向技术或项目负责人确认]
-    I --> J[记录确认结果]
-    J --> K[形成最终采购基准]
+    A["收到最终技术检查邮件"] --> B["确认项目和车辆"]
+    B --> C["确认项目号和PSP"]
+    C --> D["保存邮件和附件"]
+    D --> E["复制最终报价"]
+    E --> F["复制预算或预核算"]
+    F --> G["比较最终检查与报价配置"]
+    G --> H{"是否发现新增或取消配置"}
+    H -->|是| I["向技术或项目负责人确认"]
+    I --> J["记录确认结果"]
+    J --> K["形成最终采购基准"]
     H -->|否| K
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
@@ -498,19 +549,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[形成最终采购基准] --> B[准备供应商邮件]
-    B --> C[附加最终技术检查文件]
-    C --> D[写明车辆类型和项目号]
-    D --> E[写明目标到货日期]
-    E --> F[写明最终交付地址]
-    F --> G{是否先送第三方改装商}
-    G -->|是| H[写明第一交付地址和后续运输责任]
-    G -->|否| I[写明直接交付地点]
-    H --> J[要求依据最终检查生成订购资料]
+    A["形成最终采购基准"] --> B["准备供应商邮件"]
+    B --> C["附加最终技术检查文件"]
+    C --> D["写明车辆类型和项目号"]
+    D --> E["写明目标到货日期"]
+    E --> F["写明最终交付地址"]
+    F --> G{"是否先送第三方改装商"}
+    G -->|是| H["写明第一交付地址和后续运输责任"]
+    G -->|否| I["写明直接交付地点"]
+    H --> J["要求依据最终检查生成订购资料"]
     I --> J
-    J --> K[写明持续注册和GSR合规要求]
-    K --> L[发送邮件]
-    L --> M[保存外发邮件]
+    J --> K["写明持续注册和GSR合规要求"]
+    K --> L["发送邮件"]
+    L --> M["保存外发邮件"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -524,22 +575,22 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到正式订购资料] --> B[核对车型和底盘参数]
-    B --> C[逐项核对技术代码]
-    C --> D[核对配置描述]
-    D --> E[核对数量]
-    E --> F[核对采购净价]
-    F --> G[核对一次性费用]
-    G --> H[核对到货日期]
-    H --> I[核对交付地址]
-    I --> J[核对付款条件]
-    J --> K[核对变更截止日期]
-    K --> L[核对GSR和注册要求]
-    L --> M{是否与最终检查和报价一致}
-    M -->|否| N[建立差异清单]
-    N --> O[供应商修订订购资料]
+    A["收到正式订购资料"] --> B["核对车型和底盘参数"]
+    B --> C["逐项核对技术代码"]
+    C --> D["核对配置描述"]
+    D --> E["核对数量"]
+    E --> F["核对采购净价"]
+    F --> G["核对一次性费用"]
+    G --> H["核对到货日期"]
+    H --> I["核对交付地址"]
+    I --> J["核对付款条件"]
+    J --> K["核对变更截止日期"]
+    K --> L["核对GSR和注册要求"]
+    L --> M{"是否与最终检查和报价一致"}
+    M -->|否| N["建立差异清单"]
+    N --> O["供应商修订订购资料"]
     O --> A
-    M -->|是| P[批准进入SAP下单]
+    M -->|是| P["批准进入SAP下单"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -552,6 +603,10 @@ flowchart LR
 
 # 第三部分：SAP采购订单
 
+> **流程目标**：在SAP中建立准确、获批且可审计的采购承诺。  
+> **主要责任角色**：底盘采购；审批角色：授权审批人。  
+> **关键控制**：供应商主体、BANF/PSP、价格、税码、交期、地址及文本。
+
 <a id="p15"></a>
 
 ## 15. SAP下单前数据准备流程
@@ -559,20 +614,20 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[取得项目号和PSP] --> B[在CJ20N查找BANF]
-    B --> C[记录BANF号和位置号]
-    C --> D[退出CJ20N释放项目]
-    D --> E[确认供应商主体]
-    E --> F[确认正确分支机构]
-    F --> G[确认采购组织和采购组]
-    G --> H[确认工厂和物料号]
-    H --> I[确认数量和计量单位]
-    I --> J[确认净价/币种/价格单位]
-    J --> K[确认税码]
-    K --> L[确认到货日期]
-    L --> M[确认交付地址]
-    M --> N[确认付款条件]
-    N --> O[数据准备完成]
+    A["取得项目号和PSP"] --> B["在CJ20N查找BANF"]
+    B --> C["记录BANF号和位置号"]
+    C --> D["退出CJ20N释放项目"]
+    D --> E["确认供应商主体"]
+    E --> F["确认正确分支机构"]
+    F --> G["确认采购组织和采购组"]
+    G --> H["确认工厂和物料号"]
+    H --> I["确认数量和计量单位"]
+    I --> J["确认净价/币种/价格单位"]
+    J --> K["确认税码"]
+    K --> L["确认到货日期"]
+    L --> M["确认交付地址"]
+    M --> N["确认付款条件"]
+    N --> O["数据准备完成"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -586,19 +641,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[查看最终报价抬头] --> B[确认开票和签约主体]
-    B --> C[查看供应商联系人地址]
-    C --> D[查看交付责任地区]
-    D --> E[在SAP搜索供应商]
-    E --> F{出现多个分支机构}
-    F -->|是| G[逐一核对名称/地址/供应商号]
-    F -->|否| H[选择唯一供应商]
-    G --> I[选择与报价主体一致的分支]
-    H --> J[再次核对]
+    A["查看最终报价抬头"] --> B["确认开票和签约主体"]
+    B --> C["查看供应商联系人地址"]
+    C --> D["查看交付责任地区"]
+    D --> E["在SAP搜索供应商"]
+    E --> F{"出现多个分支机构"}
+    F -->|是| G["逐一核对名称/地址/供应商号"]
+    F -->|否| H["选择唯一供应商"]
+    G --> I["选择与报价主体一致的分支"]
+    H --> J["再次核对"]
     I --> J
-    J --> K{主体是否完全一致}
-    K -->|否| L[停止下单并澄清]
-    K -->|是| M[继续创建订单]
+    J --> K{"主体是否完全一致"}
+    K -->|否| L["停止下单并澄清"]
+    K -->|是| M["继续创建订单"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -612,19 +667,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[取得最新项目SOP] --> B[计算标准需求日=SOP前14天]
-    B --> C[取得供应商可确认交期]
-    C --> D{供应商交期是否满足需求日}
-    D -->|是| E[使用批准后的需求日或确认日]
-    D -->|否| F[计算晚交差异]
-    F --> G[通知项目负责人和生产计划]
-    G --> H{生产是否接受该交期}
-    H -->|否| I[要求供应商提前或制定替代方案]
-    H -->|是| J[取得书面接受]
-    I --> K[记录升级和供应商承诺]
-    J --> L[使用批准后的交期]
+    A["取得最新项目SOP"] --> B["计算标准需求日=SOP前14天"]
+    B --> C["取得供应商可确认交期"]
+    C --> D{"供应商交期是否满足需求日"}
+    D -->|是| E["使用批准后的需求日或确认日"]
+    D -->|否| F["计算晚交差异"]
+    F --> G["通知项目负责人和生产计划"]
+    G --> H{"生产是否接受该交期"}
+    H -->|否| I["要求供应商提前或制定替代方案"]
+    H -->|是| J["取得书面接受"]
+    I --> K["记录升级和供应商承诺"]
+    J --> L["使用批准后的交期"]
     K --> L
-    E --> M[写入SAP Delivery date]
+    E --> M["写入SAP Delivery date"]
     L --> M
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
@@ -639,26 +694,26 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[进入ME21N] --> B[引用BANF和位置号]
-    B --> C[选择采购订单类型]
-    C --> D[选择正确供应商]
-    D --> E[检查组织数据]
-    E --> F[检查物料和数量]
-    F --> G[录入净价和税码]
-    G --> H[录入到货日期]
-    H --> I[录入交付地址]
-    I --> J[维护外部抬头文本]
-    J --> K[维护内部头部备注]
-    K --> L[维护短文本]
-    L --> M[维护位置长文本]
-    M --> N[检查PSP和科目分配]
-    N --> O[检查付款条件]
-    O --> P[执行保存前复核]
-    P --> Q{是否存在错误或警告}
-    Q -->|是| R[逐项修正]
+    A["进入ME21N"] --> B["引用BANF和位置号"]
+    B --> C["选择采购订单类型"]
+    C --> D["选择正确供应商"]
+    D --> E["检查组织数据"]
+    E --> F["检查物料和数量"]
+    F --> G["录入净价和税码"]
+    G --> H["录入到货日期"]
+    H --> I["录入交付地址"]
+    I --> J["维护外部抬头文本"]
+    J --> K["维护内部头部备注"]
+    K --> L["维护短文本"]
+    L --> M["维护位置长文本"]
+    M --> N["检查PSP和科目分配"]
+    N --> O["检查付款条件"]
+    O --> P["执行保存前复核"]
+    P --> Q{"是否存在错误或警告"}
+    Q -->|是| R["逐项修正"]
     R --> P
-    Q -->|否| S[保存采购订单]
-    S --> T[记录4500开头的订单号]
+    Q -->|否| S["保存采购订单"]
+    S --> T["记录4500开头的订单号"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -672,20 +727,20 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[维护外部抬头文本] --> B[写明车辆或项目地点]
-    B --> C[写明项目号和PSP主编号]
-    C --> D[写明订单确认要求]
-    D --> E[写明交付或合规特别要求]
-    E --> F[维护内部头部备注]
-    F --> G[Offer 报价金额]
-    G --> H[Order 订单金额]
-    H --> I[Sale 销售金额]
-    I --> J[填写SOP]
-    J --> K[填写Delivery date]
-    K --> L[填写SOP调整说明]
-    L --> M[填写底盘交付后30天付款]
-    M --> N[维护短文本]
-    N --> O[项目地点 / 项目号 / PSP主编号]
+    A["维护外部抬头文本"] --> B["写明车辆或项目地点"]
+    B --> C["写明项目号和PSP主编号"]
+    C --> D["写明订单确认要求"]
+    D --> E["写明交付或合规特别要求"]
+    E --> F["维护内部头部备注"]
+    F --> G["Offer 报价金额"]
+    G --> H["Order 订单金额"]
+    H --> I["Sale 销售金额"]
+    I --> J["填写SOP"]
+    J --> K["填写Delivery date"]
+    K --> L["填写SOP调整说明"]
+    L --> M["填写底盘交付后30天付款"]
+    M --> N["维护短文本"]
+    N --> O["项目地点 / 项目号 / PSP主编号"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -699,19 +754,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[从最终报价取得Offer] --> B[从订购资料取得Order]
-    B --> C[从客户订单取得Sale]
-    C --> D[比较Offer与Order]
-    D --> E{Offer与Order是否一致}
-    E -->|否| F[查明配置变更/涨价/附加费]
-    E -->|是| G[比较Order与Sale]
-    F --> H[取得书面解释或批准]
+    A["从最终报价取得Offer"] --> B["从订购资料取得Order"]
+    B --> C["从客户订单取得Sale"]
+    C --> D["比较Offer与Order"]
+    D --> E{"Offer与Order是否一致"}
+    E -->|否| F["查明配置变更/涨价/附加费"]
+    E -->|是| G["比较Order与Sale"]
+    F --> H["取得书面解释或批准"]
     H --> G
-    G --> I{Sale是否低于Order}
-    I -->|是| J[暂停订单并通知项目负责人]
-    J --> K[确认销售数据或批准亏损]
-    K --> L[记录决定]
-    I -->|否| M[价格检查通过]
+    G --> I{"Sale是否低于Order"}
+    I -->|是| J["暂停订单并通知项目负责人"]
+    J --> K["确认销售数据或批准亏损"]
+    K --> L["记录决定"]
+    I -->|否| M["价格检查通过"]
     L --> M
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
@@ -726,21 +781,21 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[ME21N保存成功] --> B[自动系统邮件仅发内部邮箱]
-    B --> C[退出ME21N]
-    C --> D[进入ME23N]
-    D --> E[核对供应商和订单号]
-    E --> F[核对物料/数量/净价]
-    F --> G[核对税码/交期/地址]
-    G --> H[核对文本和PSP]
-    H --> I{复核是否通过}
-    I -->|否| J[修改订单并重新复核]
+    A["ME21N保存成功"] --> B["自动系统邮件仅发内部邮箱"]
+    B --> C["退出ME21N"]
+    C --> D["进入ME23N"]
+    D --> E["核对供应商和订单号"]
+    E --> F["核对物料/数量/净价"]
+    F --> G["核对税码/交期/地址"]
+    G --> H["核对文本和PSP"]
+    H --> I{"复核是否通过"}
+    I -->|否| J["修改订单并重新复核"]
     J --> D
-    I -->|是| K[上传最终报价]
-    K --> L[上传正式订购资料]
-    L --> M[上传最终技术检查]
-    M --> N[上传关键澄清邮件]
-    N --> O[更新底盘订单总表]
+    I -->|是| K["上传最终报价"]
+    K --> L["上传正式订购资料"]
+    L --> M["上传最终技术检查"]
+    M --> N["上传关键澄清邮件"]
+    N --> O["更新底盘订单总表"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -753,6 +808,10 @@ flowchart LR
 
 # 第四部分：审批与正式订单
 
+> **流程目标**：确保对外订单在授权完成后准确发送，并形成法律与审计证据。  
+> **主要责任角色**：采购与授权审批人。  
+> **关键控制**：职责分离、签字完整、附件一致、发送对象准确。
+
 <a id="p22"></a>
 
 ## 22. 签字资料准备流程
@@ -760,16 +819,16 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[SAP订单复核通过] --> B[生成最终SAP订单文件]
-    B --> C[打印或保存正式订购资料]
-    C --> D[制作项目信息纸条]
-    D --> E[填写项目/项目号/品牌或地点]
-    E --> F[填写SAP订单号]
-    F --> G[填写Offer/Order/Sale]
-    G --> H[填写订单变更]
-    H --> I[填写SOP和到货日期]
-    I --> J[填写付款条件]
-    J --> K[组合为完整签字包]
+    A["SAP订单复核通过"] --> B["生成最终SAP订单文件"]
+    B --> C["打印或保存正式订购资料"]
+    C --> D["制作项目信息纸条"]
+    D --> E["填写项目/项目号/品牌或地点"]
+    E --> F["填写SAP订单号"]
+    F --> G["填写Offer/Order/Sale"]
+    G --> H["填写订单变更"]
+    H --> I["填写SOP和到货日期"]
+    I --> J["填写付款条件"]
+    J --> K["组合为完整签字包"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -783,19 +842,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[提交签字包] --> B[授权审批人检查]
-    B --> C{技术依据是否完整}
-    C -->|否| D[退回补充技术文件]
+    A["提交签字包"] --> B["授权审批人检查"]
+    B --> C{"技术依据是否完整"}
+    C -->|否| D["退回补充技术文件"]
     D --> A
-    C -->|是| E{价格是否合理}
-    E -->|否| F[退回解释价格差异]
+    C -->|是| E{"价格是否合理"}
+    E -->|否| F["退回解释价格差异"]
     F --> A
-    E -->|是| G{交期和付款条件是否可接受}
-    G -->|否| H[退回重新协调]
+    E -->|是| G{"交期和付款条件是否可接受"}
+    G -->|否| H["退回重新协调"]
     H --> A
-    G -->|是| I[完成签字]
-    I --> J[完成SAP审批]
-    J --> K[扫描或保存签字版本]
+    G -->|是| I["完成签字"]
+    I --> J["完成SAP审批"]
+    J --> K["扫描或保存签字版本"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -809,19 +868,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[审批和签字完成] --> B[新建供应商订单邮件]
-    B --> C[附加签字订购资料]
-    C --> D[附加SAP采购订单]
-    D --> E[写明车辆/项目/订单号]
-    E --> F[写明到货日期和交付地点]
-    F --> G[要求供应商安排生产]
-    G --> H[要求发送订单确认AB]
-    H --> I[指定订单确认公共邮箱]
-    I --> J[写入持续注册和GSR合规要求]
-    J --> K[核对附件和收件人]
-    K --> L[发送正式订单]
-    L --> M[保存外发邮件]
-    M --> N[上传SAP并关联项目]
+    A["审批和签字完成"] --> B["新建供应商订单邮件"]
+    B --> C["附加签字订购资料"]
+    C --> D["附加SAP采购订单"]
+    D --> E["写明车辆/项目/订单号"]
+    E --> F["写明到货日期和交付地点"]
+    F --> G["要求供应商安排生产"]
+    G --> H["要求发送订单确认AB"]
+    H --> I["指定订单确认公共邮箱"]
+    I --> J["写入持续注册和GSR合规要求"]
+    J --> K["核对附件和收件人"]
+    K --> L["发送正式订单"]
+    L --> M["保存外发邮件"]
+    M --> N["上传SAP并关联项目"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -834,6 +893,10 @@ flowchart LR
 
 # 第五部分：订单确认AB
 
+> **流程目标**：验证供应商接受的商业与技术条件与采购订单一致。  
+> **主要责任角色**：底盘采购。  
+> **关键控制**：配置、价格、数量、交期、地址、付款条件及变更截止日。
+
 <a id="p25"></a>
 
 ## 25. AB催收流程
@@ -841,20 +904,20 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[正式订单发送] --> B[登记发送日期]
-    B --> C[设置AB要求回复日期]
-    C --> D{回复日前是否收到AB}
-    D -->|是| E[登记AB收到日期]
-    E --> F[进入AB审核]
-    D -->|否| G[发送第一次催收]
-    G --> H[设置下一跟进日期]
-    H --> I{是否收到明确回复}
-    I -->|是| J[登记供应商承诺日期]
-    J --> K{承诺日前是否收到}
+    A["正式订单发送"] --> B["登记发送日期"]
+    B --> C["设置AB要求回复日期"]
+    C --> D{"回复日前是否收到AB"}
+    D -->|是| E["登记AB收到日期"]
+    E --> F["进入AB审核"]
+    D -->|否| G["发送第一次催收"]
+    G --> H["设置下一跟进日期"]
+    H --> I{"是否收到明确回复"}
+    I -->|是| J["登记供应商承诺日期"]
+    J --> K{"承诺日前是否收到"}
     K -->|是| E
-    K -->|否| L[第二次催收并升级]
+    K -->|否| L["第二次催收并升级"]
     I -->|否| L
-    L --> M[通知项目和采购管理]
+    L --> M["通知项目和采购管理"]
     M --> D
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
@@ -869,22 +932,22 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[打开AB] --> B[核对本方采购订单号]
-    B --> C[登记供应商订单号]
-    C --> D[登记短号/PIN/生产识别码]
-    D --> E[核对车辆型号]
-    E --> F[逐项核对技术代码]
-    F --> G[核对数量]
-    G --> H[核对净价和附加费]
-    H --> I[核对币种和付款条件]
-    I --> J[核对确认交期]
-    J --> K[核对交付地址]
-    K --> L[登记变更截止日期]
-    L --> M[核对GSR和注册状态]
-    M --> N{是否存在任何偏差}
-    N -->|否| O[标记 已审核无偏差]
-    O --> P[上传SAP并更新总表]
-    N -->|是| Q[进入AB差异处理]
+    A["打开AB"] --> B["核对本方采购订单号"]
+    B --> C["登记供应商订单号"]
+    C --> D["登记短号/PIN/生产识别码"]
+    D --> E["核对车辆型号"]
+    E --> F["逐项核对技术代码"]
+    F --> G["核对数量"]
+    G --> H["核对净价和附加费"]
+    H --> I["核对币种和付款条件"]
+    I --> J["核对确认交期"]
+    J --> K["核对交付地址"]
+    K --> L["登记变更截止日期"]
+    L --> M["核对GSR和注册状态"]
+    M --> N{"是否存在任何偏差"}
+    N -->|否| O["标记 已审核无偏差"]
+    O --> P["上传SAP并更新总表"]
+    N -->|是| Q["进入AB差异处理"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -898,22 +961,22 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[发现AB差异] --> B{差异类型}
-    B -->|技术配置| C[技术岗位评估]
-    B -->|价格| D[核对涨价/附加费/折扣]
-    B -->|交期| E[评估SOP和排产影响]
-    B -->|地址或付款| F[采购核对合同条件]
-    C --> G[形成处理决定]
+    A["发现AB差异"] --> B{"差异类型"}
+    B -->|技术配置| C["技术岗位评估"]
+    B -->|价格| D["核对涨价/附加费/折扣"]
+    B -->|交期| E["评估SOP和排产影响"]
+    B -->|地址或付款| F["采购核对合同条件"]
+    C --> G["形成处理决定"]
     D --> G
     E --> G
     F --> G
-    G --> H[向供应商发送差异清单]
-    H --> I[要求修订AB或书面解释]
-    I --> J[收到修订AB]
-    J --> K[重新完整审核]
-    K --> L{差异是否关闭}
+    G --> H["向供应商发送差异清单"]
+    H --> I["要求修订AB或书面解释"]
+    I --> J["收到修订AB"]
+    J --> K["重新完整审核"]
+    K --> L{"差异是否关闭"}
     L -->|否| A
-    L -->|是| M[上传最终AB和澄清记录]
+    L -->|是| M["上传最终AB和澄清记录"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -926,6 +989,10 @@ flowchart LR
 
 # 第六部分：交期与变更管控
 
+> **流程目标**：使供应商交付计划与项目SOP、配置冻结和生产需求持续一致。  
+> **主要责任角色**：底盘采购；协同角色：项目、计划、技术、供应商。  
+> **关键控制**：周度更新、风险分级、书面变更、升级与闭环。
+
 <a id="p28"></a>
 
 ## 28. 每周交期管控数据更新
@@ -933,15 +1000,15 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[每周五上午取得最新SOP] --> B[导入底盘总表]
-    B --> C[匹配项目号和PSP]
-    C --> D[更新每台底盘SOP]
-    D --> E[导入供应商最新交期]
-    E --> F[更新变更截止日期]
-    F --> G[更新底盘当前状态]
-    G --> H[更新责任人和下一跟进日]
-    H --> I[保存更新版本]
-    I --> J[保留上一版本用于追溯]
+    A["每周五上午取得最新SOP"] --> B["导入底盘总表"]
+    B --> C["匹配项目号和PSP"]
+    C --> D["更新每台底盘SOP"]
+    D --> E["导入供应商最新交期"]
+    E --> F["更新变更截止日期"]
+    F --> G["更新底盘当前状态"]
+    G --> H["更新责任人和下一跟进日"]
+    H --> I["保存更新版本"]
+    I --> J["保留上一版本用于追溯"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -955,17 +1022,17 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[读取底盘总表] --> B[筛选已下单项目]
-    B --> C[排除已取消订单]
-    C --> D[排除已最终关闭项目]
-    D --> E{状态是否已在本地仓库}
-    E -->|是| F[移出交期催办清单]
-    E -->|否| G{状态是否已在指定第三方仓库}
+    A["读取底盘总表"] --> B["筛选已下单项目"]
+    B --> C["排除已取消订单"]
+    C --> D["排除已最终关闭项目"]
+    D --> E{"状态是否已在本地仓库"}
+    E -->|是| F["移出交期催办清单"]
+    E -->|否| G{"状态是否已在指定第三方仓库"}
     G -->|是| F
-    G -->|否| H[保留在管控清单]
-    H --> I{SOP是否在未来一个季度}
-    I -->|是| J[列为重点监管]
-    I -->|否| K[列为常规监管]
+    G -->|否| H["保留在管控清单"]
+    H --> I{"SOP是否在未来一个季度"}
+    I -->|是| J["列为重点监管"]
+    I -->|否| K["列为常规监管"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -979,18 +1046,18 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[取得最新SOP日期] --> B[取得当前预计到货日期]
-    B --> C[计算差异=SOP-预计到货]
-    C --> D{差异结果}
-    D -->|正数| E[底盘早于SOP到货]
-    D -->|0| F[底盘在SOP当天到货]
-    D -->|负数| G[底盘晚于SOP到货]
-    E --> H{是否大于30天}
-    H -->|否| I[通常可接受并继续观察]
-    H -->|是| J[评估仓储和资金占用]
-    G --> K{是否小于等于-14天}
-    K -->|否| L[确认生产是否可吸收]
-    K -->|是| M[严重晚交并升级处理]
+    A["取得最新SOP日期"] --> B["取得当前预计到货日期"]
+    B --> C["计算差异=SOP-预计到货"]
+    C --> D{"差异结果"}
+    D -->|正数| E["底盘早于SOP到货"]
+    D -->|0| F["底盘在SOP当天到货"]
+    D -->|负数| G["底盘晚于SOP到货"]
+    E --> H{"是否大于30天"}
+    H -->|否| I["通常可接受并继续观察"]
+    H -->|是| J["评估仓储和资金占用"]
+    G --> K{"是否小于等于-14天"}
+    K -->|否| L["确认生产是否可吸收"]
+    K -->|是| M["严重晚交并升级处理"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1004,21 +1071,21 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[完成交期差异计算] --> B{供应商是否确认交期}
-    B -->|否| C[红色风险]
-    B -->|是| D{是否已影响SOP}
+    A["完成交期差异计算"] --> B{"供应商是否确认交期"}
+    B -->|否| C["红色风险"]
+    B -->|是| D{"是否已影响SOP"}
     D -->|是| C
-    D -->|否| E{晚交是否超过14天}
-    E -->|是| F[橙色风险]
-    E -->|否| G{过早是否超过30天}
+    D -->|否| E{"晚交是否超过14天"}
+    E -->|是| F["橙色风险"]
+    E -->|否| G{"过早是否超过30天"}
     G -->|是| F
-    G -->|否| H{是否临近变更截止日期}
-    H -->|是| I[黄色风险]
-    H -->|否| J[绿色风险]
-    C --> K[立即升级并制定替代方案]
-    F --> L[书面纠正措施和高频跟进]
-    I --> M[书面确认并设置下一跟进日]
-    J --> N[保持周度监控]
+    G -->|否| H{"是否临近变更截止日期"}
+    H -->|是| I["黄色风险"]
+    H -->|否| J["绿色风险"]
+    C --> K["立即升级并制定替代方案"]
+    F --> L["书面纠正措施和高频跟进"]
+    I --> M["书面确认并设置下一跟进日"]
+    J --> N["保持周度监控"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1032,20 +1099,20 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[识别需提前或推迟的底盘] --> B[准备项目和订单信息]
-    B --> C[说明当前SOP和现行交期]
-    C --> D[说明要求的新交期]
-    D --> E[向供应商发送书面请求]
-    E --> F{供应商是否接受}
-    F -->|是| G[取得书面确认]
-    G --> H[更新总表和SAP必要字段]
-    F -->|否| I[要求最早可行日期及原因]
-    I --> J[评估生产影响]
-    J --> K{项目是否接受}
-    K -->|是| L[记录批准后的交期]
-    K -->|否| M[升级管理并研究替代方案]
+    A["识别需提前或推迟的底盘"] --> B["准备项目和订单信息"]
+    B --> C["说明当前SOP和现行交期"]
+    C --> D["说明要求的新交期"]
+    D --> E["向供应商发送书面请求"]
+    E --> F{"供应商是否接受"}
+    F -->|是| G["取得书面确认"]
+    G --> H["更新总表和SAP必要字段"]
+    F -->|否| I["要求最早可行日期及原因"]
+    I --> J["评估生产影响"]
+    J --> K{"项目是否接受"}
+    K -->|是| L["记录批准后的交期"]
+    K -->|否| M["升级管理并研究替代方案"]
     L --> H
-    M --> N[持续跟进直至关闭]
+    M --> N["持续跟进直至关闭"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1059,19 +1126,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[读取供应商变更截止日期] --> B[计算距离截止日天数]
-    B --> C{是否仍有未决技术问题}
-    C -->|否| D[标记配置冻结]
-    C -->|是| E{是否临近截止日}
-    E -->|否| F[设置内部决定期限]
-    F --> G[跟进项目和技术确认]
-    E -->|是| H[立即发送升级通知]
-    H --> I[召开快速决策或书面会签]
-    I --> J{能否在截止日前决定}
-    J -->|是| K[正式向供应商提交变更]
-    J -->|否| L[评估错过截止日的费用和交期风险]
-    K --> M[取得修订资料和确认]
-    L --> N[管理层决定接受或取消变更]
+    A["读取供应商变更截止日期"] --> B["计算距离截止日天数"]
+    B --> C{"是否仍有未决技术问题"}
+    C -->|否| D["标记配置冻结"]
+    C -->|是| E{"是否临近截止日"}
+    E -->|否| F["设置内部决定期限"]
+    F --> G["跟进项目和技术确认"]
+    E -->|是| H["立即发送升级通知"]
+    H --> I["召开快速决策或书面会签"]
+    I --> J{"能否在截止日前决定"}
+    J -->|是| K["正式向供应商提交变更"]
+    J -->|否| L["评估错过截止日的费用和交期风险"]
+    K --> M["取得修订资料和确认"]
+    L --> N["管理层决定接受或取消变更"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1085,21 +1152,21 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到配置变更请求] --> B[登记请求人/日期/原因]
-    B --> C[记录当前配置与目标配置]
-    C --> D[技术评估可行性]
-    D --> E[供应商评估可实施性]
-    E --> F[供应商报价变更费用]
-    F --> G[供应商说明交期影响]
-    G --> H[评估GSR和注册影响]
-    H --> I{项目和技术是否批准}
-    I -->|否| J[书面拒绝并关闭]
-    I -->|是| K[取得修订订购资料]
-    K --> L[修改SAP订单]
-    L --> M[重新审批]
-    M --> N[正式向供应商确认变更]
-    N --> O[取得修订AB]
-    O --> P[更新总表和项目档案]
+    A["收到配置变更请求"] --> B["登记请求人/日期/原因"]
+    B --> C["记录当前配置与目标配置"]
+    C --> D["技术评估可行性"]
+    D --> E["供应商评估可实施性"]
+    E --> F["供应商报价变更费用"]
+    F --> G["供应商说明交期影响"]
+    G --> H["评估GSR和注册影响"]
+    H --> I{"项目和技术是否批准"}
+    I -->|否| J["书面拒绝并关闭"]
+    I -->|是| K["取得修订订购资料"]
+    K --> L["修改SAP订单"]
+    L --> M["重新审批"]
+    M --> N["正式向供应商确认变更"]
+    N --> O["取得修订AB"]
+    O --> P["更新总表和项目档案"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1112,6 +1179,10 @@ flowchart LR
 
 # 第七部分：到货、入库与质量
 
+> **流程目标**：确保实际到货底盘身份、配置、状态和文件符合订购要求。  
+> **主要责任角色**：物流与质量；采购负责供应商异常闭环。  
+> **关键控制**：VIN匹配、系统数据、质量放行和不合格整改。
+
 <a id="p35"></a>
 
 ## 35. 到货识别与总表更新流程
@@ -1119,18 +1190,18 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到物流到货通知] --> B[查看交货单和车辆信息]
-    B --> C[根据供应商订单号匹配]
-    C --> D[根据项目号或地点复核]
-    D --> E[根据VIN最终确认]
-    E --> F{是否唯一匹配}
-    F -->|否| G[暂停入库并澄清身份]
+    A["收到物流到货通知"] --> B["查看交货单和车辆信息"]
+    B --> C["根据供应商订单号匹配"]
+    C --> D["根据项目号或地点复核"]
+    D --> E["根据VIN最终确认"]
+    E --> F{"是否唯一匹配"}
+    F -->|否| G["暂停入库并澄清身份"]
     G --> C
-    F -->|是| H[状态改为已到库]
-    H --> I[录入实际到货日期]
-    I --> J[录入VIN]
-    J --> K[更新最后修改周次]
-    K --> L[保存交货单PDF]
+    F -->|是| H["状态改为已到库"]
+    H --> I["录入实际到货日期"]
+    I --> J["录入VIN"]
+    J --> K["更新最后修改周次"]
+    K --> L["保存交货单PDF"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1144,20 +1215,20 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[取得底盘物料号] --> B[使用MM03查询物料]
-    B --> C[查看变更信息]
-    C --> D{是否需要扩展分类视图}
-    D -->|是| E[按授权使用MM01]
-    D -->|否| F[进入现有分类信息]
+    A["取得底盘物料号"] --> B["使用MM03查询物料"]
+    B --> C["查看变更信息"]
+    C --> D{"是否需要扩展分类视图"}
+    D -->|是| E["按授权使用MM01"]
+    D -->|否| F["进入现有分类信息"]
     E --> F
-    F --> G[维护VIN]
-    G --> H[维护供应商订单号]
-    H --> I[维护项目归属]
-    I --> J[维护客户提供或自有属性]
-    J --> K[从项目系统查询程序号]
-    K --> L[录入程序号和地点信息]
-    L --> M[交叉核对]
-    M --> N[保存]
+    F --> G["维护VIN"]
+    G --> H["维护供应商订单号"]
+    H --> I["维护项目归属"]
+    I --> J["维护客户提供或自有属性"]
+    J --> K["从项目系统查询程序号"]
+    K --> L["录入程序号和地点信息"]
+    L --> M["交叉核对"]
+    M --> N["保存"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1171,18 +1242,18 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[底盘完成入库登记] --> B[向质量岗位发送检查通知]
-    B --> C[附加交货单和订购基准]
-    C --> D[核对VIN]
-    D --> E[核对车型和技术配置]
-    E --> F[核对AB确认配置]
-    F --> G[检查外观和运输损伤]
-    G --> H[检查随车文件]
-    H --> I[检查法规和注册要求]
-    I --> J{是否全部符合}
-    J -->|是| K[质量放行]
-    K --> L[更新总表和项目状态]
-    J -->|否| M[创建不放行记录]
+    A["底盘完成入库登记"] --> B["向质量岗位发送检查通知"]
+    B --> C["附加交货单和订购基准"]
+    C --> D["核对VIN"]
+    D --> E["核对车型和技术配置"]
+    E --> F["核对AB确认配置"]
+    F --> G["检查外观和运输损伤"]
+    G --> H["检查随车文件"]
+    H --> I["检查法规和注册要求"]
+    I --> J{"是否全部符合"}
+    J -->|是| K["质量放行"]
+    K --> L["更新总表和项目状态"]
+    J -->|否| M["创建不放行记录"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1196,25 +1267,25 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[质量不放行] --> B[取得明确异常描述]
-    B --> C{异常类别}
-    C -->|配置缺失| D[核对订单和AB责任]
-    C -->|错误配置| E[核对供应商生产偏差]
-    C -->|运输损伤| F[核对物流责任和照片]
-    C -->|文件缺失| G[要求补充文件]
-    C -->|系统数据错误| H[内部修正主数据]
-    D --> I[汇总证据]
+    A["质量不放行"] --> B["取得明确异常描述"]
+    B --> C{"异常类别"}
+    C -->|配置缺失| D["核对订单和AB责任"]
+    C -->|错误配置| E["核对供应商生产偏差"]
+    C -->|运输损伤| F["核对物流责任和照片"]
+    C -->|文件缺失| G["要求补充文件"]
+    C -->|系统数据错误| H["内部修正主数据"]
+    D --> I["汇总证据"]
     E --> I
     F --> I
     G --> I
     H --> I
-    I --> J[向供应商发出书面异常通知]
-    J --> K[明确整改措施/责任/期限/费用]
-    K --> L[执行整改或补件]
-    L --> M[质量复检]
-    M --> N{是否通过}
+    I --> J["向供应商发出书面异常通知"]
+    J --> K["明确整改措施/责任/期限/费用"]
+    K --> L["执行整改或补件"]
+    L --> M["质量复检"]
+    M --> N{"是否通过"}
     N -->|否| J
-    N -->|是| O[正式放行并关闭异常]
+    N -->|是| O["正式放行并关闭异常"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1227,6 +1298,10 @@ flowchart LR
 
 # 第八部分：注册文件与归档
 
+> **流程目标**：建立完整、可检索、可审计的车辆和采购档案。  
+> **主要责任角色**：采购及文件责任岗位。  
+> **关键控制**：注册信息一致、版本受控、SAP与项目目录一致。
+
 <a id="p39"></a>
 
 ## 39. 注册文件处理流程
@@ -1234,18 +1309,18 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[收到车辆注册文件] --> B[登记收到日期]
-    B --> C[核对VIN]
-    C --> D[核对车型]
-    D --> E[核对项目归属]
-    E --> F{信息是否一致}
-    F -->|否| G[冻结文件流转]
-    G --> H[联系供应商修正]
+    A["收到车辆注册文件"] --> B["登记收到日期"]
+    B --> C["核对VIN"]
+    C --> D["核对车型"]
+    D --> E["核对项目归属"]
+    E --> F{"信息是否一致"}
+    F -->|否| G["冻结文件流转"]
+    G --> H["联系供应商修正"]
     H --> C
-    F -->|是| I[扫描并保存电子副本]
-    I --> J[原件移交授权岗位]
-    J --> K[邮件通知注册负责人]
-    K --> L[上传SAP并更新总表]
+    F -->|是| I["扫描并保存电子副本"]
+    I --> J["原件移交授权岗位"]
+    J --> K["邮件通知注册负责人"]
+    K --> L["上传SAP并更新总表"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1259,20 +1334,20 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[产生或收到新文件] --> B[添加日期和项目标识]
-    B --> C[标注文件类型和版本]
-    C --> D[保存至对应项目子文件夹]
-    D --> E{是否为关键采购文件}
-    E -->|是| F[上传SAP订单附件]
-    E -->|否| G[保留在项目目录]
-    F --> H{是否需要关联PSP}
-    H -->|是| I[使用CV01N关联项目]
-    H -->|否| J[检查附件可读性]
+    A["产生或收到新文件"] --> B["添加日期和项目标识"]
+    B --> C["标注文件类型和版本"]
+    C --> D["保存至对应项目子文件夹"]
+    D --> E{"是否为关键采购文件"}
+    E -->|是| F["上传SAP订单附件"]
+    E -->|否| G["保留在项目目录"]
+    F --> H{"是否需要关联PSP"}
+    H -->|是| I["使用CV01N关联项目"]
+    H -->|否| J["检查附件可读性"]
     I --> J
     G --> J
-    J --> K[检查是否有旧版]
-    K --> L[旧版标记版本或作废]
-    L --> M[完成归档登记]
+    J --> K["检查是否有旧版"]
+    K --> L["旧版标记版本或作废"]
+    L --> M["完成归档登记"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1286,25 +1361,25 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[准备关闭底盘采购项目] --> B{最终报价是否归档}
-    B -->|否| B1[补充最终报价]
+    A["准备关闭底盘采购项目"] --> B{"最终报价是否归档"}
+    B -->|否| B1["补充最终报价"]
     B1 --> B
-    B -->|是| C{签字订单是否归档}
-    C -->|否| C1[补充签字订单]
+    B -->|是| C{"签字订单是否归档"}
+    C -->|否| C1["补充签字订单"]
     C1 --> C
-    C -->|是| D{最终AB是否归档}
-    D -->|否| D1[补充最终AB]
+    C -->|是| D{"最终AB是否归档"}
+    D -->|否| D1["补充最终AB"]
     D1 --> D
-    D -->|是| E{交期和变更记录是否完整}
-    E -->|否| E1[补充历史记录]
+    D -->|是| E{"交期和变更记录是否完整"}
+    E -->|否| E1["补充历史记录"]
     E1 --> E
-    E -->|是| F{交货单和质量放行是否归档}
-    F -->|否| F1[补充到货质量资料]
+    E -->|是| F{"交货单和质量放行是否归档"}
+    F -->|否| F1["补充到货质量资料"]
     F1 --> F
-    F -->|是| G{注册文件状态是否明确}
-    G -->|否| G1[追踪注册文件]
+    F -->|是| G{"注册文件状态是否明确"}
+    G -->|否| G1["追踪注册文件"]
     G1 --> G
-    G -->|是| H[项目资料闭环]
+    G -->|是| H["项目资料闭环"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1317,6 +1392,10 @@ flowchart LR
 
 # 第九部分：周期性工作与管理
 
+> **流程目标**：通过日、周、月管理节奏维持流程稳定和风险透明。  
+> **主要责任角色**：底盘采购流程负责人。  
+> **关键控制**：待办闭环、风险升级、KPI复盘和持续改进。
+
 <a id="p42"></a>
 
 ## 42. 每日工作流程
@@ -1324,16 +1403,16 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[检查供应商和内部邮件] --> B[处理紧急交期和质量异常]
-    B --> C[更新底盘总表]
-    C --> D[检查待下单项目]
-    D --> E[使用ME57检查BANF]
-    E --> F[跟进未收报价]
-    F --> G[跟进未收订购资料]
-    G --> H[跟进未收AB]
-    H --> I[处理发票或价格问题]
-    I --> J[更新责任人和下一跟进日]
-    J --> K[保存每日备份]
+    A["检查供应商和内部邮件"] --> B["处理紧急交期和质量异常"]
+    B --> C["更新底盘总表"]
+    C --> D["检查待下单项目"]
+    D --> E["使用ME57检查BANF"]
+    E --> F["跟进未收报价"]
+    F --> G["跟进未收订购资料"]
+    G --> H["跟进未收AB"]
+    H --> I["处理发票或价格问题"]
+    I --> J["更新责任人和下一跟进日"]
+    J --> K["保存每日备份"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1347,15 +1426,15 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[导入新增待下单项目] --> B[核对项目是否可下单]
-    B --> C[周五更新最新SOP]
-    C --> D[重新计算交期差异]
-    D --> E[筛选未来一个季度底盘]
-    E --> F[检查变更截止日期]
-    F --> G[更新绿黄橙红风险]
-    G --> H[跟进橙色和红色项目]
-    H --> I[通知项目和计划岗位]
-    I --> J[记录措施和下一跟进日]
+    A["导入新增待下单项目"] --> B["核对项目是否可下单"]
+    B --> C["周五更新最新SOP"]
+    C --> D["重新计算交期差异"]
+    D --> E["筛选未来一个季度底盘"]
+    E --> F["检查变更截止日期"]
+    F --> G["更新绿黄橙红风险"]
+    G --> H["跟进橙色和红色项目"]
+    H --> I["通知项目和计划岗位"]
+    I --> J["记录措施和下一跟进日"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1369,19 +1448,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[统计新下单数量] --> B[统计未回AB数量]
-    B --> C[统计延期和提前到货]
-    C --> D[统计质量不放行]
-    D --> E[统计配置和价格偏差]
-    E --> F[计算供应商准时交付率]
-    F --> G[计算一次质量放行率]
-    G --> H[识别重复异常]
-    H --> I{原因来自供应商还是内部}
-    I -->|供应商| J[制定供应商改进措施]
-    I -->|内部| K[修订流程和检查清单]
-    J --> L[指定责任人和期限]
+    A["统计新下单数量"] --> B["统计未回AB数量"]
+    B --> C["统计延期和提前到货"]
+    C --> D["统计质量不放行"]
+    D --> E["统计配置和价格偏差"]
+    E --> F["计算供应商准时交付率"]
+    F --> G["计算一次质量放行率"]
+    G --> H["识别重复异常"]
+    H --> I{"原因来自供应商还是内部"}
+    I -->|供应商| J["制定供应商改进措施"]
+    I -->|内部| K["修订流程和检查清单"]
+    J --> L["指定责任人和期限"]
     K --> L
-    L --> M[下月验证改善效果]
+    L --> M["下月验证改善效果"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1394,6 +1473,10 @@ flowchart LR
 
 # 第十部分：质量门与快速检查
 
+> **流程目标**：在关键承诺点前阻止不完整、不一致或未经授权的业务进入下一阶段。  
+> **主要责任角色**：各质量门责任人。  
+> **关键控制**：未通过即停止、修正后重新验证、例外必须书面批准。
+
 <a id="p45"></a>
 
 ## 45. 七个质量门总流程
@@ -1401,19 +1484,19 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[QG1 询价资料完整] --> B[QG2 报价技术商务一致]
-    B --> C[QG3 订购资料审核通过]
-    C --> D[QG4 SAP订单和审批完成]
-    D --> E[QG5 AB审核无未关闭偏差]
-    E --> F[QG6 到货质量正式放行]
-    F --> G[QG7 资料归档和风险关闭]
-    A -->|不通过| A1[补齐资料后重新检查]
-    B -->|不通过| B1[供应商修订报价]
-    C -->|不通过| C1[供应商修订订购资料]
-    D -->|不通过| D1[禁止发送正式订单]
-    E -->|不通过| E1[修订AB或批准偏差]
-    F -->|不通过| F1[整改和复检]
-    G -->|不通过| G1[项目保持待办状态]
+    A["QG1 询价资料完整"] --> B["QG2 报价技术商务一致"]
+    B --> C["QG3 订购资料审核通过"]
+    C --> D["QG4 SAP订单和审批完成"]
+    D --> E["QG5 AB审核无未关闭偏差"]
+    E --> F["QG6 到货质量正式放行"]
+    F --> G["QG7 资料归档和风险关闭"]
+    A -->|不通过| A1["补齐资料后重新检查"]
+    B -->|不通过| B1["供应商修订报价"]
+    C -->|不通过| C1["供应商修订订购资料"]
+    D -->|不通过| D1["禁止发送正式订单"]
+    E -->|不通过| E1["修订AB或批准偏差"]
+    F -->|不通过| F1["整改和复检"]
+    G -->|不通过| G1["项目保持待办状态"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1427,21 +1510,21 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[准备创建采购订单] --> B{最终技术检查是否有效}
-    B -->|否| X[停止下单]
-    B -->|是| C{最终报价是否有效}
+    A["准备创建采购订单"] --> B{"最终技术检查是否有效"}
+    B -->|否| X["停止下单"]
+    B -->|是| C{"最终报价是否有效"}
     C -->|否| X
-    C -->|是| D{订购资料是否无偏差}
+    C -->|是| D{"订购资料是否无偏差"}
     D -->|否| X
-    D -->|是| E{供应商主体是否正确}
+    D -->|是| E{"供应商主体是否正确"}
     E -->|否| X
-    E -->|是| F{BANF和PSP是否正确}
+    E -->|是| F{"BANF和PSP是否正确"}
     F -->|否| X
-    F -->|是| G{价格和税码是否正确}
+    F -->|是| G{"价格和税码是否正确"}
     G -->|否| X
-    G -->|是| H{到货日期和地址是否批准}
+    G -->|是| H{"到货日期和地址是否批准"}
     H -->|否| X
-    H -->|是| I[允许进入ME21N下单]
+    H -->|是| I["允许进入ME21N下单"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1455,21 +1538,21 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[准备向供应商发送订单] --> B{ME23N复核是否通过}
-    B -->|否| X[禁止发送]
-    B -->|是| C{SAP审批是否完成}
+    A["准备向供应商发送订单"] --> B{"ME23N复核是否通过"}
+    B -->|否| X["禁止发送"]
+    B -->|是| C{"SAP审批是否完成"}
     C -->|否| X
-    C -->|是| D{签字文件是否完整}
+    C -->|是| D{"签字文件是否完整"}
     D -->|否| X
-    D -->|是| E{订单号和项目是否正确}
+    D -->|是| E{"订单号和项目是否正确"}
     E -->|否| X
-    E -->|是| F{到货日期和交付地址是否正确}
+    E -->|是| F{"到货日期和交付地址是否正确"}
     F -->|否| X
-    F -->|是| G{是否要求AB和生产排期}
+    F -->|是| G{"是否要求AB和生产排期"}
     G -->|否| X
-    G -->|是| H{是否包含持续GSR合规要求}
+    G -->|是| H{"是否包含持续GSR合规要求"}
     H -->|否| X
-    H -->|是| I[允许发送正式订单]
+    H -->|是| I["允许发送正式订单"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1483,20 +1566,20 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[底盘已到货] --> B{项目和订单是否匹配}
-    B -->|否| X[暂停入库]
-    B -->|是| C{VIN是否一致}
+    A["底盘已到货"] --> B{"项目和订单是否匹配"}
+    B -->|否| X["暂停入库"]
+    B -->|是| C{"VIN是否一致"}
     C -->|否| X
-    C -->|是| D{配置是否符合订单和AB}
-    D -->|否| Y[质量不放行]
-    D -->|是| E{外观是否无运输损伤}
+    C -->|是| D{"配置是否符合订单和AB"}
+    D -->|否| Y["质量不放行"]
+    D -->|是| E{"外观是否无运输损伤"}
     E -->|否| Y
-    E -->|是| F{随车和注册文件是否完整}
+    E -->|是| F{"随车和注册文件是否完整"}
     F -->|否| Y
-    F -->|是| G{SAP和总表是否更新}
-    G -->|否| H[补充系统数据]
+    F -->|是| G{"SAP和总表是否更新"}
+    G -->|否| H["补充系统数据"]
     H --> G
-    G -->|是| I[质量放行并转生产]
+    G -->|是| I["质量放行并转生产"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1512,10 +1595,10 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[交期差异=SOP-到货日期] --> B[正数=早到]
-    A --> C[负数=晚到]
-    B --> D[超过+30天 评估推迟]
-    C --> E[低于或等于-14天 升级晚交风险]
+    A["交期差异=SOP-到货日期"] --> B["正数=早到"]
+    A --> C["负数=晚到"]
+    B --> D["超过+30天 评估推迟"]
+    C --> E["低于或等于-14天 升级晚交风险"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1525,16 +1608,16 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[订单金额检查] --> B[Offer=最终报价]
-    A --> C[Order=正式订购资料和SAP订单]
-    A --> D[Sale=客户订单中的底盘销售价]
-    B --> E[比较Offer与Order]
+    A["订单金额检查"] --> B["Offer=最终报价"]
+    A --> C["Order=正式订购资料和SAP订单"]
+    A --> D["Sale=客户订单中的底盘销售价"]
+    B --> E["比较Offer与Order"]
     C --> E
-    E --> F[比较Order与Sale]
+    E --> F["比较Order与Sale"]
     D --> F
-    F --> G{Sale低于Order}
-    G -->|是| H[暂停并书面确认]
-    G -->|否| I[价格检查通过]
+    F --> G{"Sale低于Order"}
+    G -->|是| H["暂停并书面确认"]
+    G -->|否| I["价格检查通过"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1544,12 +1627,12 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[底盘合规控制] --> B[询价阶段写明GSR要求]
-    B --> C[订购资料阶段再次确认]
-    C --> D[正式订单写明持续可注册]
-    D --> E[AB审核确认状态]
-    E --> F[到货质量检查法规和文件]
-    F --> G[整车制造期间保持合规]
+    A["底盘合规控制"] --> B["询价阶段写明GSR要求"]
+    B --> C["订购资料阶段再次确认"]
+    C --> D["正式订单写明持续可注册"]
+    D --> E["AB审核确认状态"]
+    E --> F["到货质量检查法规和文件"]
+    F --> G["整车制造期间保持合规"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
@@ -1565,15 +1648,83 @@ flowchart LR
 ```mermaid
 %%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','secondaryColor':'#FFF4D6','tertiaryColor':'#E8F6F3','edgeLabelBackground':'#FFFFFF'}}}%%
 flowchart LR
-    A[底盘质量放行] --> B[交货单已归档]
-    B --> C[最终AB已归档]
-    C --> D[所有变更已关闭]
-    D --> E[注册文件状态明确]
-    E --> F[SAP附件完整]
-    F --> G[项目目录版本完整]
-    G --> H[底盘采购流程正式结案]
+    A["底盘质量放行"] --> B["交货单已归档"]
+    B --> C["最终AB已归档"]
+    C --> D["所有变更已关闭"]
+    D --> E["注册文件状态明确"]
+    E --> F["SAP附件完整"]
+    F --> G["项目目录版本完整"]
+    G --> H["底盘采购流程正式结案"]
     classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.6px,color:#17202A,font-size:20px;
     classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
     classDef exception fill:#FCE8E6,stroke:#B3261E,stroke-width:2px,color:#6A1B16,font-size:20px;
     classDef outcome fill:#E8F6F3,stroke:#16836B,stroke-width:2px,color:#0B5345,font-size:20px;
 ```
+
+
+---
+
+# 附录：流程治理标准
+
+## RACI 职责矩阵
+
+> R = 执行负责；A = 最终负责；C = 协商参与；I = 知会。
+
+| 核心流程 | 采购 | 项目 | 技术 | 计划 | 审批人 | 物流 | 质量 | 供应商 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 需求完整性确认 | R | A | C | C | I | I | I | I |
+| 询价与报价审核 | A/R | C | C | I | I | I | I | R |
+| 最终订购资料确认 | R | A | C | C | I | I | I | R |
+| SAP订单创建 | R | C | I | C | A | I | I | I |
+| 正式订单发送 | R | I | I | I | A | I | I | I |
+| AB审核 | A/R | C | C | C | I | I | I | R |
+| 交期与变更管理 | R | A | C | C | I | I | I | R |
+| 到货与系统登记 | C | I | I | I | I | A/R | C | I |
+| 质量放行 | C | I | C | I | I | C | A/R | I |
+| 供应商异常关闭 | A/R | C | C | I | I | C | R | R |
+| 资料归档与结案 | A/R | I | I | I | I | C | C | I |
+
+## KPI 与控制指标
+
+| 指标 | 定义 | 建议目标 | 预警阈值 | 管理频率 |
+|---|---|---:|---:|---|
+| 报价按期回复率 | 按期收到报价数 / 到期询价数 | ≥95% | <90% | 月度 |
+| 报价一次通过率 | 无需修订的报价数 / 已审核报价数 | ≥90% | <80% | 月度 |
+| AB按期返回率 | 期限内收到AB的订单数 / 已发订单数 | ≥95% | <90% | 周度/月度 |
+| AB无偏差率 | 无偏差AB数 / 已审核AB数 | ≥95% | <90% | 月度 |
+| 准时交付率 | 按确认日期到货数 / 到货总数 | ≥95% | <90% | 月度 |
+| 到货一次放行率 | 首检放行数 / 已检底盘数 | ≥98% | <95% | 月度 |
+| 关键附件完整率 | 附件完整订单数 / 抽查订单数 | 100% | <98% | 月度 |
+| 红色风险按期关闭率 | 按期关闭红色风险数 / 红色风险总数 | 100% | <95% | 周度 |
+
+## 例外与升级机制
+
+```mermaid
+%%{init: {'theme':'base','flowchart':{'curve':'basis','nodeSpacing':24,'rankSpacing':38,'padding':10,'htmlLabels':true,'useMaxWidth':true},'themeVariables':{'fontFamily':'Microsoft YaHei, Noto Sans SC, Arial, sans-serif','fontSize':'20px','primaryColor':'#EAF2F8','primaryTextColor':'#17202A','primaryBorderColor':'#2E6E9E','lineColor':'#667788','edgeLabelBackground':'#FFFFFF'}}}%%
+flowchart LR
+    A["识别偏差或例外"] --> B["评估技术、成本、交期和合规影响"] --> C{"能否在标准流程内解决"}
+    C -->|是| D["责任人制定纠正措施"] --> E["在规定期限内关闭"] --> F["保存证据并更新流程记录"]
+    C -->|否| G["提交流程负责人和授权审批人"] --> H["记录例外范围、期限和补救措施"] --> I["批准或拒绝"]
+    I -->|批准| E
+    I -->|拒绝| J["停止业务并恢复标准流程"]
+    classDef default fill:#EAF2F8,stroke:#2E6E9E,stroke-width:1.8px,color:#17202A,font-size:20px;
+    classDef decision fill:#FFF4D6,stroke:#B8860B,stroke-width:2px,color:#4A3A00,font-size:20px;
+    class C decision;
+```
+
+## 变更记录模板
+
+| 版本 | 日期 | 变更类型 | 变更内容 | 影响流程 | 发起人 | 审核人 | 批准人 |
+|---|---|---|---|---|---|---|---|
+| V8.0 | YYYY-MM-DD | 结构升级 | 增加文档治理、层级模型、SIPOC、RACI、KPI及例外机制 | 全流程 |  |  |  |
+
+## 发布前检查
+
+- [ ] 所有 Mermaid 图在 GitHub 中正常渲染
+- [ ] 所有目录链接能够跳转到对应流程
+- [ ] 流程负责人、执行人和审批人已确认
+- [ ] SAP事务、字段、邮箱和文件路径仍然有效
+- [ ] 所有质量门均有明确输入、判断条件和输出
+- [ ] 所有例外均有书面审批与关闭证据
+- [ ] 旧版本已标记为失效或归档
+- [ ] 主分支中的 README 为唯一受控发布版本
